@@ -1,7 +1,11 @@
 let before = document.getElementById("before");
 let after = document.getElementById("after");
+let answerArea = document.getElementById("answerArea");
+//let answer = parseInt(answerArea.value);
+let a = 0;
 
 // Assigning Variables to hold table data
+// I'm sure there's a more efficient way to do this with an array, maybe later. 
 let x1 = document.getElementById("x1");
 let x2 = document.getElementById("x2");
 let x3 = document.getElementById("x3");
@@ -58,9 +62,18 @@ function randomEquation() {
     };
 };
 
-
+function checkAnswer() {
+    let answer = parseInt(answerArea.value);
+    console.log(`Answer logged is ${answer}`);
+    if (answer === a) {
+        console.log("Correct!");
+    } else {
+        console.log("Try again.")
+    }
+}
 
 randomEquation();
+
 
 document.getElementById("additive").addEventListener("click", function () {
     before.innerHTML = ""; // Clear previous content
@@ -73,4 +86,8 @@ document.getElementById("multiplicative").addEventListener("click", function () 
     after.innerHTML = ""; // Clear previous content
     katex.render("y=", before);
     katex.render("x", after);
+});
+
+document.getElementById("submit").addEventListener("click", function () {
+    checkAnswer();
 });
