@@ -24,7 +24,7 @@ input {
     font-family: "Montserrat", sans-serif;
 }
 
-#answerArea {
+#answer {
     width: 260px;
     display: flex;
     justify-content: space-between;

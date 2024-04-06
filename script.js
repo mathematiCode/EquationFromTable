@@ -65,12 +65,13 @@ function randomEquation() {
 function checkAnswer() {
     let answer = parseInt(answerArea.value);
     console.log(`Answer logged is ${answer}`);
+    console.log(typeof answer);
     if (answer === a) {
         console.log("Correct!");
     } else {
-        console.log("Try again.")
+        console.log("Try again.");
     }
-}
+};
 
 randomEquation();
 
