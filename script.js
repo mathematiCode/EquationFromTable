@@ -1,7 +1,9 @@
 let before = document.getElementById("before");
 let after = document.getElementById("after");
 let answerArea = document.getElementById("answerArea");
-//let answer = parseInt(answerArea.value);
+//let checks = document.getElementById("checkmarks");
+let resultsArray = [];
+
 let a = 0;
 
 // Assigning Variables to hold table data
@@ -48,8 +50,6 @@ function addValues(a) {
     y5.innerHTML = 8 + a;
 }
 
-
-
 // Generates a Random Equation
 function randomEquation() {
     a = getRandomInt(20) - 9;
@@ -68,12 +68,13 @@ function checkAnswer() {
     console.log(typeof answer);
     if (answer === a) {
         console.log("Correct!");
+        resultsArray.push("✅");
     } else {
         console.log("Try again.");
+        resultsArray.push("❌");
     }
+    console.log(resultsArray);
 };
-
-randomEquation();
 
 
 document.getElementById("additive").addEventListener("click", function () {
@@ -91,4 +92,10 @@ document.getElementById("multiplicative").addEventListener("click", function () 
 
 document.getElementById("submit").addEventListener("click", function () {
     checkAnswer();
+});
+
+document.getElementById("nextProblem").addEventListener("click", function () {
+    randomEquation();
+    let checkString = resultsArray.join("");
+    checkmarks.innerHTML = checkString;
 });
