@@ -1,10 +1,13 @@
 let before = document.getElementById("before");
 let after = document.getElementById("after");
 let answerArea = document.getElementById("answerArea");
-//let checks = document.getElementById("checkmarks");
-let resultsArray = [];
+let score = document.getElementById("score");
+let multiplyGenerate;
+let multOrAdd;
+
 
 let a = 0;
+let streak = 0;
 
 // Assigning Variables to hold table data
 // I'm sure there's a more efficient way to do this with an array, maybe later. 
@@ -50,12 +53,24 @@ function addValues(a) {
     y5.innerHTML = 8 + a;
 }
 
+
+function updateScore(correctBinary) {
+    if (correctBinary === 1) {
+        streak++;
+        score.innerHTML = `Streak: ${streak}`;
+    } else {
+        streak = 0;
+        score.innerHTML = "Streak: 0";
+    }
+};
+
+
 // Generates a Random Equation
 function randomEquation() {
     a = getRandomInt(20) - 9;
     console.log(`a equals ${a}`);
-    let addOrMult = getRandomInt(2);
-    if (addOrMult === 1) {
+    multiplyGenerate = getRandomInt(2);
+    if (multiplyGenerate === 1) {
         multiplyValues(a);
     } else {
         addValues(a);
@@ -66,14 +81,16 @@ function checkAnswer() {
     let answer = parseInt(answerArea.value);
     console.log(`Answer logged is ${answer}`);
     console.log(typeof answer);
-    if (answer === a) {
+    console.log(`Multiplicative is ${multiplyGenerate}`);
+    console.log(`MultOrAdd is ${multOrAdd}`);
+
+    if (answer === a && (multiplyGenerate === multOrAdd)) {
         console.log("Correct!");
-        resultsArray.push("✅");
+        updateScore(1);
     } else {
         console.log("Try again.");
-        resultsArray.push("❌");
+        updateScore(0);
     }
-    console.log(resultsArray);
 };
 
 
@@ -81,6 +98,7 @@ document.getElementById("additive").addEventListener("click", function () {
     before.innerHTML = ""; // Clear previous content
     after.innerHTML = ""; // Clear previous content
     katex.render("y = x + ", before);
+    multOrAdd = 0;
 });
 
 document.getElementById("multiplicative").addEventListener("click", function () {
@@ -88,6 +106,7 @@ document.getElementById("multiplicative").addEventListener("click", function () 
     after.innerHTML = ""; // Clear previous content
     katex.render("y=", before);
     katex.render("x", after);
+    multOrAdd = 1;
 });
 
 document.getElementById("submit").addEventListener("click", function () {
@@ -96,6 +115,4 @@ document.getElementById("submit").addEventListener("click", function () {
 
 document.getElementById("nextProblem").addEventListener("click", function () {
     randomEquation();
-    let checkString = resultsArray.join("");
-    checkmarks.innerHTML = checkString;
 });
