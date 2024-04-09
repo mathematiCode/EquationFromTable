@@ -61,4 +61,8 @@ input {
 
 #score {
     margin: 30px;
+    background-color: #353442;
+    font-size: 19px;
+    color: white;
+    padding: 3px;
 }
