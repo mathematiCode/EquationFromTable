@@ -2,6 +2,7 @@ let before = document.getElementById("before");
 let after = document.getElementById("after");
 let answerArea = document.getElementById("answerArea");
 let score = document.getElementById("score");
+let multButton = document.getElementById("multiplicative");
 let multiplyGenerate;
 let multOrAdd;
 
@@ -99,6 +100,7 @@ document.getElementById("additive").addEventListener("click", function () {
     after.innerHTML = ""; // Clear previous content
     katex.render("y = x + ", before);
     multOrAdd = 0;
+    answer.style.display = "flex";
 });
 
 document.getElementById("multiplicative").addEventListener("click", function () {
@@ -107,6 +109,7 @@ document.getElementById("multiplicative").addEventListener("click", function () 
     katex.render("y=", before);
     katex.render("x", after);
     multOrAdd = 1;
+    answer.style.display = "flex";
 });
 
 document.getElementById("submit").addEventListener("click", function () {
@@ -115,4 +118,6 @@ document.getElementById("submit").addEventListener("click", function () {
 
 document.getElementById("nextProblem").addEventListener("click", function () {
     randomEquation();
+    tableOfValues.style.display = "block";
+    twoChoices.style.display = "block";
 });

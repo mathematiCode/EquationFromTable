@@ -11,6 +11,11 @@ th {
     width: 20%;
 }
 
+#tableOfValues {
+    display: none;
+    border: 1px;
+}
+
 td,
 th {
     text-align: center;
@@ -26,9 +31,9 @@ input {
 
 #answer {
     width: 260px;
-    display: flex;
     justify-content: space-between;
     align-items: center;
+    display: none;
 }
 
 #twoChoices {
@@ -37,6 +42,7 @@ input {
     margin-bottom: 22px;
     justify-content: space-around;
     align-items: center;
+    display: none;
 }
 
 #multiplicative {
