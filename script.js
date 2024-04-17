@@ -3,6 +3,7 @@ let after = document.getElementById("after");
 let answerArea = document.getElementById("answerArea");
 let score = document.getElementById("score");
 let multButton = document.getElementById("multiplicative");
+const correct = document.getElementById("correct");
 let multiplyGenerate;
 let multOrAdd;
 
@@ -87,8 +88,12 @@ function checkAnswer() {
 
     if (answer === a && (multiplyGenerate === multOrAdd)) {
         console.log("Correct!");
+        correct.innerHTML = "Correct!";
+        correct.style.backgroundColor = "#75c98b";
         updateScore(1);
     } else {
+        correct.innerHTML = "Not Correct";
+        correct.style.backgroundColor = "#db8c8c";
         console.log("Try again.");
         updateScore(0);
     }
@@ -121,5 +126,7 @@ document.getElementById("nextProblem").addEventListener("click", function () {
     tableOfValues.style.display = "block";
     twoChoices.style.display = "block";
     answer.style.display = "none";
-    answerArea.value ="";
+    answerArea.value = "";
+    correct.innerHTML = "";
+    correct.style.backgroundColor = "white";
 });
