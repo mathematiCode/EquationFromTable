@@ -120,4 +120,6 @@ document.getElementById("nextProblem").addEventListener("click", function () {
     randomEquation();
     tableOfValues.style.display = "block";
     twoChoices.style.display = "block";
+    answer.style.display = "none";
+    answerArea.value ="";
 });
